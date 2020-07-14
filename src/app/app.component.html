@@ -1,0 +1,56 @@
+<!-- <!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>BootstrapForms</title>
+  <base href="/">
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+</head>
+
+<body> -->
+Query Builder
+<div>
+  <!--Value property = instead of ngModel-->
+  <query-builder [config]="config" [allowCollapse]="true" [allowRuleset]="true" [(value)]="query"
+    [classNames]="classNames">
+    <!-- Override remove button -->
+    <!-- <ng-container *queryRemoveButton="let rule; let removeRule=removeRule">
+      <div fxFlex>
+          <button type="button" class="btn btn-default" class="remove-rule-btn btn btn-light fa fa-minus">Default</button>
+      </div>
+    </ng-container> -->
+
+    <ng-container
+      *queryButtonGroup="let ruleSet ; let addRule=addRule; let addRuleSet=addRuleSet; let removeRuleSet=removeRuleSet">
+      <button type="button" class="btn btn-light fa fa-plus-square" *ngIf="addRule" (click)="addRule()">Rule</button>
+      <br />
+      <button type="button" class="btn btn-light fa fa-plus-square" *ngIf="addRuleSet"
+        (click)="addRuleSet()">Group</button>
+
+      <button type="button" class="btn btn-light fa fa-minus-square" (click)="removeRuleSet()">Group</button>
+    </ng-container>
+
+    <!-- <ng-container *querySwitchGroup="let ruleset">
+      <button type="button" value="and">And</button>
+      <button type="button" value="or">Or</button>
+    </ng-container> -->
+    
+    <ng-container *queryInput="let rule; type: 'date'">
+      <!--Default date and time picker -->
+      <div class="form-group pmd-textfield pmd-textfield-floating-label">
+        <label class="control-label" for="datetimepicker-default">Select Date and Time</label>
+        <input type="text" id="datetimepicker-default" class="form-control" />
+      </div>
+      <button type="button" class="btn btn-default" class="remove-rule-btn">Default</button>
+    </ng-container>
+
+  </query-builder>
+</div>
+
+<app-sample></app-sample>
+<!-- <router-outlet></router-outlet>
+</body>
+</html> -->
